@@ -1,0 +1,8 @@
+{
+  "buildCommand": "pip install -r requirements.txt",
+  "startCommand": "gunicorn app:app",
+  "envVars": {
+    "SECRET_KEY": "generate-a-random-string",
+    "JWT_SECRET_KEY": "generate-another-random-string"
+  }
+}
