@@ -15,7 +15,9 @@ def create_app():
     app.config.from_object(Config)
     app.url_map.strict_slashes = False
     
-    CORS(app, origins="*", supports_credentials=True)
+    import os
+    allowed_origins = os.environ.get('CORS_ORIGINS', '*').split(',')
+    CORS(app, origins=allowed_origins, supports_credentials=True)
     db.init_app(app)
     bcrypt.init_app(app)
     jwt.init_app(app)
